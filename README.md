@@ -1,15 +1,5 @@
 # Webapp
 
-## Requisitos
-
-- NodeJS
-  - Versão 10.15.3 (podes usar nvm)
-
-- Package GM
-  - deve ser feita a partir do CMD do windows **em modo admin**, pois sua instalação usando outro terminal como o Git Bash apresentou problemas.
-  - Excluir todos os pacotes globais instalados previamente devido a conflitos no momento de iniciar um novo projeto.
-  - Antes de rodar o comando, dar permissão de escrita no diretório *package* inteiro, incluindo todos os ficheiros internos.
-
 ## Preparar ambiente com Virtual Machine (recomendado)
 
 1. abrir o Virtual Box e importar o arquivo Hackathon - ALTRAN.ova
@@ -26,7 +16,19 @@
 
 ## Preparar ambiente com Virtual Machine (NÃO recomendado)
 
-- NGI-Emulator-1.9.0
+### Requisitos
+
+- NodeJS
+  - Versão 10.15.3 (podes usar nvm)
+
+- Package GM
+  - deve ser feita a partir do CMD do windows **em modo admin**, pois sua instalação usando outro terminal como o Git Bash apresentou problemas.
+  - Excluir todos os pacotes globais instalados previamente devido a conflitos no momento de iniciar um novo projeto.
+  - Antes de rodar o comando, dar permissão de escrita no diretório *package* inteiro, incluindo todos os ficheiros internos.
+
+
+
+### NGI-Emulator-1.9.0
   1. Instalar normalmente em seu sistema operacional
   1. abrir o emulador
   1. carregar em File > Create App. Faça as seguintes seleções:
