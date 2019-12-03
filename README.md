@@ -61,6 +61,16 @@ gm.vehicle.getCurrentPosition( data => {
 ```
 Talvez tu tenhas problemas com o typescript por não ter um type definition para o objeto gm. Como solucionar o problema faz parte do desafio.
 
+# Back end
+
+## Baseline
+
+Será provida uma baseline para o backend. Esta consiste numa aplicação utilizando o Spring Boot Framework, acessando uma base de dados H2 em memória, já com a infraestrutura de acesso a dados e segurança configurada. A baseline propõe uma arquitetura em camadas, a saber: controllers/services/repositories/model. Tanto a arquitetura da solução quanto os frameworks adotados fazem parte de uma proposta e os participantes estão livres para adotar quaisquer outros estilos arquiteturais. No entanto, caso adotem a solução proposta, terão consultores disponíveis para prestar esclarecimentos sobre como a baseline foi construída.
+
+## Requisitos
+
+Além da implementação das features, faz parte dos requisitos deste hackaton a conversão deste módulo para um banco de dados persistente, como MySQL/Postgree SQL. O acesso aos dados é feito utilizando o framework Spring Data JPA. A segurança está configurada através do framework Spring Security. Tanto a configuração de acesso a dados quanto a configuração da segurança da aplicação podem demandar alterações com a construção das features restantes. Tais alterações também fazem parte do desafio.
+
 Good Hacking!
 
 

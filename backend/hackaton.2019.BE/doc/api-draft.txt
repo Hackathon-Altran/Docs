@@ -1,0 +1,113 @@
+
+-> User Management (utilizadores criados em backoffice)
+	LOGIN - POST /api/user/login?user=[username]&pwd=[password]
+		RETURN {
+			token: [token]
+		}
+	LOGOUT - POST /api/user/logout?user=[username]&token=[token]
+	
+-> Restaurants Orders
+	LIST OF RESTAURANTS = GET /api/food/restaurants?token=[token]&x=[x]&y=[y]
+		RETURN	{
+			restaurants: [
+				{
+					restaurantId: "ABC",
+					name: "Android Food",
+					address: "Avenida Central",
+					location: {x: 31.222, y: 74.222},
+					distance: 52.7, (distância em km's)
+				},
+				{
+					restaurantId: "CBA",
+					name: "iOS Food",
+					address: "Praça do Municipio",
+					location: {x: 30.222, y: 73.222},
+					distance: 34.5, (distância em km's)
+				}
+				...
+			]
+		}
+		
+	MENU PER RESTAURANT = GET /api/food/restaurant?token=[token]&restaurantId=[restaurantId]
+		RETURN
+			menu: [
+				{
+					menuId: "1",
+					name: "Fast Foie Gras",
+					price: 10.35,
+					image: [Base64 png],
+				},
+				{
+					menuId: "2",
+					name: "Fast Bacalhau com Broa",
+					price: 8.35,
+					image: [Base64 png],
+				},
+				{
+					menuId: "3",
+					name: "Fast Prego no Pão",
+					price: 5.35,
+					image: [Base64 png],
+				}
+			]
+			
+	POST ORDER = POST /api/food/restaurant?token=[token]&restaurantId=[restaurantId]
+		PARAMETER
+			cart: [
+				1, 2
+			]
+			
+		RETURN 
+			order: {
+				orderId: [orderId]
+				status: "READY"
+			}
+			
+	GET STATUS = GET /api/food/restaurant?[token]&restaurantId=[restaurantId]&orderId=[orderId]
+		RETURN
+			order: {
+				orderId: [orderId]
+				status: [status] in {READY, COOKING, TO DELIVER, DELIVERED, CANCELLED}
+			}
+	
+	POST CANCEL ORDER = POST /api/food/restaurant?[token]&restaurantId=[restaurantId]&orderId=[orderId]&cancel
+		RETURN
+			order: {
+				orderId: [orderId] (só permite cancelar orders em READY)
+				status: [status] in {READY, COOKING, TO DELIVER, DELIVERED, CANCELLED}
+			}
+			
+	POST UPDATE ORDER = POST /api/food/restaurant?[token]&restaurantId=[restaurantId]&orderId=[orderId]&update
+		PARAMETER
+			cart: [
+				1, 2, 3
+			]
+		RETURN
+			order: {
+				orderId: [orderId] (só permite atualizar orders em READY)
+				status: [status] in {READY, COOKING, TO DELIVER, DELIVERED, CANCELLED}
+			}
+
+-> Reporting
+	GET MENU REPORTS = GET /api/reporting?token=[token]
+		RETURN
+			report: {
+				restaurants: {
+					"ABC": {
+						numberOfOrders: 3,
+						menuOrders: {
+							"1": 1,
+							"2": 2,
+							"3": 0
+						}
+					},
+					"CBA": {
+						numberOfOrders: 1,
+						menuOrders: {
+							"1": 0,
+							"2": 1,
+							"3": 0
+						}
+					},
+				}
+			}
